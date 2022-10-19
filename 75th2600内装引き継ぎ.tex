@@ -1,10 +1,15 @@
 \documentclass{jsarticle}
 
-\title{75th2600内装引き継ぎ}
+\title{
+    コズミックトラベル \\
+    \large 75th2600内装設計チーフ引き継ぎ
+}
 \author{75th621 千葉森生}
+\date{最終更新日: \today}
 
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{subfigure}
+\usepackage[dvipdfmx]{hyperref}
 
 
 \begin{document}
@@ -25,18 +30,20 @@
 
 で、どんな内装を作ったかと言いますと、
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/plan_overview/1.png}
+    \includegraphics[width=0.5\linewidth]{images/plan_overview/1.png}
     \caption{設計概観}
     \label{fig:設計概観}
 \end{figure}
 
-こんなのです。真ん中の正六角形に人を2,3人乗せて回しました。そのため、その辺りの補強が割とエグいです。
+こんなのです。真ん中の正六角形の宇宙船に人を2,3人乗せて回しました。そのため、その辺りの補強が割とエグいです。
 今後ライドをやるクラスの参考になれば幸いです。
 なお、設計チーフの身ながら内チの仕事に近いところまで手を伸ばしていたので、割と手広い引き継ぎになってます。
 
 疑問点等あればこちらのメールアドレスまでお気軽に:  chibam496@gmail.com
+
+\clearpage
 
 \tableofcontents
 \clearpage
@@ -46,7 +53,7 @@
 
 まずは作ったものの紹介から。
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \subfigure[完成形]{
         \includegraphics[width=0.45\textwidth]{images/plan_overview/2.jpg}
@@ -64,23 +71,23 @@
 特徴としては、稼働部が巨大であること、それに応じて補強も複雑であることです。
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.45\linewidth}
         \centering
         \subfigure[宇宙船の内装]{
-            \includegraphics[width=\textwidth]{images/plan_overview/4.jpg}
+            \includegraphics[width=\linewidth]{images/plan_overview/4.jpg}
             \label{fig:内装}
         }
         \subfigure[降りた後の通路から出口方面]{
-            \includegraphics[width=\textwidth]{images/plan_overview/5.jpg}
+            \includegraphics[width=\linewidth]{images/plan_overview/5.jpg}
             \label{fig:出口}
         }
     \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.45\linewidth}
         \centering
         \subfigure[ライドを動かす様子]{
-            \includegraphics[width=\textwidth]{images/plan_overview/6.jpg}
+            \includegraphics[width=\linewidth]{images/plan_overview/6.jpg}
             \label{fig:人力}
         }
     \end{minipage}
@@ -94,7 +101,7 @@
 
 \subsection{動線}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{images/lane.png}
     \caption{動線}
@@ -109,42 +116,62 @@
     \item 教室後方から出て終了
 \end{enumerate}
 
+\clearpage
+
 \section{案の確定に至るまで}
 
 \subsection{第1回プレゼン大会@Jan 13 (原案班)}
 
-我々のクラスでは、近くの席の人と数人ずつグループになって案を考え、2回のプレゼンを経て最終案を決定しました。
+我々のクラスでは、数人ずつのグループを作って案を考え、2回のプレゼンを経て最終案を決定しました。
+
 初期の案では、4組が同時に参加できる方式を考えていました。4つの少しずつ異なる部屋を用意して相互に連結し、レールの上を回す、というアイデアです。
 ミニゲームについては具体的に決めず、クラスから公募する方針でした。
 この段階で、プレゼンに向けてBlenderを用いて3Dモデルを作成しました。
 具体的なサイズなどが感覚的にわかるため、これはかなり良かったです。sketchupでも構わないので作るといいと思います。
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \subfigure[企画書]{
         \includegraphics[width=0.45\linewidth]{images/original_plan.png}
         \label{fig:企画書}
     }
     \subfigure[3Dモデル]{
-        \includegraphics[width=0.45\linewidth]{images/minigame.jpg}
-        \label{fig:3Dモデル}
+        \includegraphics[width=0.45\linewidth]{images/3D_model_1_1.png}
+        \label{fig:3Dモデル1}
     }
     \caption{原案1}
     \label{figs:原案1}
 \end{figure}
 
+\clearpage
 
 \subsection{第2回プレゼン大会@Feb 10 (原案班)}
 
-\begin{figure}[h]
+十分な耐久性、安定性のあるレールが低コストでは作れない、連結部の耐久性が確保できないなどの理由から、レールを用いた方式を取り止めました。
+代わりに採用したのが、成蹊大学の「劇団円想者」がブログに写真を公開していた回り舞台です。この構造なら全て一体型のため連結部やレールが不要で、キャスターのみで回すことができます。
+
+
+\begin{figure}[htbp]
     \centering
+    \subfigure[3Dモデル]{
+        \includegraphics[width=0.45\linewidth]{images/3D_model_2_2.png}
+        \label{fig:3Dモデル2}
+    }
+    \subfigure[円想者の舞台]{
+        \includegraphics[width=0.45\linewidth]{images/base_bone_1.jpg}
+        \label{fig:円想者}
+    }
     \subfigure[ミニゲームについて]{
-        \includegraphics[width=0.45\linewidth]{images/minigame.jpg}
+        \includegraphics[width=0.4\linewidth]{images/minigame.jpg}
         \label{fig:ミニゲーム}
     }
-    \subfigure[質問]{
-        \includegraphics[width=0.45\linewidth]{images/original_plan.png}
-        \label{fig:質問}
+    \subfigure[意見・質問(1)]{
+        \includegraphics[width=0.25\linewidth]{images/feedback_1.png}
+        \label{fig:質問1}
+    }
+    \subfigure[意見・質問(2)]{
+        \includegraphics[width=0.25\linewidth]{images/feedback_2.png}
+        \label{fig:質問2}
     }
     \caption{原案2}
     \label{figs:原案2}
@@ -162,7 +189,7 @@
 \begin{itemize}
     \item 十分な耐久性、安定性のあるレールが低コストでは作れない
     \item 連結部の耐久性が確保できない
-    \item スペースに無駄が多い (中央の空間を管制塔みたいに使う案もあった)
+    \item スペースに無駄が多い (中央の空間を司令塔みたいに使う案もあった)
 \end{itemize}
 
 \subsection{ミニゲーム公募@Mar 22}
@@ -170,6 +197,7 @@
 \section{骨組みについて}
 
 \url{http://yensosha.blog53.fc2.com/blog-entry-592.html}
+
 \includegraphics[]{images/base_bone_1.jpg}
 
 \end{document}
