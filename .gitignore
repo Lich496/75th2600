@@ -2,3 +2,5 @@
 !*.tex
 !*.pdf
 !*.code-workspace
+
+test.*
