@@ -7,10 +7,14 @@
 \author{75th621 千葉森生}
 \date{最終更新日: \today}
 
-\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{graphicx,xcolor}
+\usepackage{siunitx}
+\usepackage{tikz}
 \usepackage{subcaption}
 \usepackage[dvipdfmx,hidelinks]{hyperref}
 \usepackage{pxjahyper}
+
+\usetikzlibrary{intersections,calc,arrows.meta}
 
 \newcommand*{\includefig}[5][c]{%
     \begin{minipage}[#1]{#2\linewidth}
@@ -25,7 +29,7 @@
         \centering
 }{%  
         \caption{\@imageHereTmp}
-        \label{fig:\@imageHereTmp}
+        \label{figs:\@imageHereTmp}
     \end{figure}
 }
 
@@ -123,7 +127,7 @@ TL;DRってIT界隈でしか通じないらしいですね。Too Long, Don't Rea
 
 \clearpage
 
-\section{案の確定に至るまで}
+\section{内装設計気取りの駄文}
 
 \subsection{第1回プレゼン大会@Jan 13 (原案班)}
 
@@ -221,6 +225,85 @@ TL;DRってIT界隈でしか通じないらしいですね。Too Long, Don't Rea
 
 \section{骨組みについて}
 
-いよいよ本題ですね。実際に
+いよいよ本題ですね。パーツごとに解説していきます。
+
+\subsection{宇宙船}
+\subsubsection{キャスター}
+
+キャスターは、\url{https://www.monotaro.com/p/7015/1978/}(図\ref{figs:キャスター}\subref{fig:キャスター1})を30個、\url{https://www.monotaro.com/p/7015/1953/}(図\ref{figs:キャスター}\subref{fig:キャスター2})を6個買いました。図はほぼ実物と同じサイズ比になっています。後者は中心の軸に向かって水平につけるやつ。なので耐荷重の計算に入れるのは前者のみ。
+ちなみにこのキャスターは使用後は文実に渡したので、文実のキャスターの中に入っています。同じのがそれなりの数揃っているのでよかったら使ってください。
+
+ダイソーなどの百均にもキャスターはありますが、自在車(タイヤの向きが自由に変わるやつ)の方が需要があるのでそっちしか置いてないことが多いです。その類のキャスターは反対方向に動き始めるときに引っかかる特性があるので、動きの単純なライドとかドアとかに使いたい場合は避けましょう。固定式のやつの方が遥かにスムーズに動きます。ただ、回転半径が小さい場合や動きが複雑(途中で向きを変えることがあるなど)の場合は自在車の方がいいです。
+
+キャスターの耐荷重の単位には$\si{daN}$(デカニュートン)という単位が使われていますが、これは重力加速度を$10$とおいた場合にちょうど耐荷重の$\si{kg}$になるようになっています。要するに、$\si{daN}$と書いてあったら$\si{kg}$だと思って大丈夫です。$\si{da}$は10倍のことなので、$\si{N}$で書いてあったら$10$で割りましょう。
+
+キャスターの数の決め方ですが、安全のため、何でもかんでもとにかく多めに見積もることが大事です。人間の平均体重は$100\si{kg}$で計算するなど。それから知っておいてほしいことは、最終的な耐荷重は $キャスターごとの耐荷重\times{}キャスターの数$ ではないことです。つける位置、間隔、キャスターへ重さを伝える木材の位置などで大きく左右されます。なので想定されうる最大荷重の\textgt{最低でも1.5倍、できれば2倍}が支えられるようにしておきましょう。取り付け位置の話は後述します。
+また、\textgt{木材や装飾の重さを決して忘れてはいけません。}キャスターにかかる負荷は人間の体重だけではありません。木材は意外と重く、我々の宇宙船は大目に見積もって$100\si{kg} = 1\si{t}$近くにもなりました。
+
+
+\begin{imageHere}{キャスター}
+    \includefig{0.3}{キャスター大(x30)}{fig:キャスター1}{images/plan/caster/mono70151978-180403-02.png}
+    \includefig{0.18}{小(x6)}{fig:キャスター2}{images/plan/caster/mono70151953-190930-02.png}
+\end{imageHere}
+
+\subsubsection{床下の構造}
+
+一番複雑なところです。そもそもなぜ参考にした構造\footnote{劇団円想者の回り舞台。図\ref{figs:原案2-1}}そのままにしなかったかと言うと、タラップを上り坂にしてロッカーの高さまで上げたかったので、その高さに床を合わせたからです。
+
+\begin{imageHere}{床下構造}
+    \includefig{0.45}{床下構造-軸側から}{床下構造1}{images/plan/underfloor/1.png}
+    \includefig{0.45}{床下構造-外周側から}{床下構造2}{images/plan/underfloor/2.png}
+    \includefig{0.45}{床下構造-軸周り}{床下構造3}{images/plan/underfloor/3.png}
+    \includefig{0.45}{床とタラップの高さ}{床とタラップの高さ}{images/plan/underfloor/4.png}
+\end{imageHere}
+
+補強は正直なところほぼ直感に頼って設計していましたが、基本的な考え方としては、
+\begin{enumerate}
+    \item 幅が大体均等になるように底面、床面の木材を敷く。
+    \item 重さのかかりやすい場所や木材の歪みを考え、キャスターの位置を大体決める。
+    \item キャスターがくる位置の真上に束を立てる。
+    \item 束が歪んだり動いたりしないように斜めの補強材を入れる。
+\end{enumerate}
+
+底面はキャスターが均等に配置できて、互いに動いてしまわなければ少なめでも大丈夫。床面は床材(コンパネ)の貼りやすさ、踏んだときに凹んだり軋んだりしないようにする、などのため、多めに敷いておきましょう。
+
+斜めの補強材は切るのが大変ですが、特にライドにおいては、変形を防ぐために非常に重要です。手間を惜しまず、ふんだんに使いましょう。
+
+\begin{imageHere}{斜めの補強材}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}
+            \draw (2,5) rectangle ++(4,2);
+            \fill (2,6) circle [radius=2pt];
+            \draw[-latex, very thick] (2,6) -- ++(-1,0);
+    
+            \draw[->, double] (4, 4) -- ++(-1,-1);
+
+            \draw (2,0) -- ++(4,0) -- ++(-1,2) -- ++(-4,0) -- cycle;
+            \fill (1.5,1) circle [radius=2pt];
+            \draw[-latex, very thick] (1.5,1) -- ++(-1,0);
+        \end{tikzpicture}
+        \subcaption{補強なしだと変形する}
+        \label{fig:斜め補強なし}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}
+            \draw (2,5) rectangle ++(4,2);
+            \draw (2,6) -- ++(1,-1)
+            \fill (2,6) circle [radius=2pt];
+            \draw[-latex, very thick] (2,6) -- ++(-1,0);
+    
+            \draw[->, double] (4, 4) -- ++(0,-1);
+
+            \draw (2,0) -- ++(4,0) -- ++(0,2) -- ++(-4,0) -- cycle;
+            \draw (2,1) -- ++(1,-1)
+            \fill (2,1) circle [radius=2pt];
+            \draw[-latex, very thick] (2,1) -- ++(-1,0);
+        \end{tikzpicture}
+        \subcaption{補強ありだと変形しない}
+        \label{fig:斜め補強あり}
+    \end{minipage}
+\end{imageHere}
 
 \end{document}

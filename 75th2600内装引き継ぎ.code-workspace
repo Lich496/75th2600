@@ -6,6 +6,10 @@
 	],
 	"settings": {
 		"nuxt.isNuxtApp": false,
-		"editor.wordWrap": "on"
+		"editor.wordWrap": "on",
+		"latex-workshop.latex.autoBuild.run": "onSave",
+		"latex-workshop.bibtex-format.tab": "4 spaces",
+		"latex-workshop.latex.autoClean.run": "onFailed",
+		"latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false
 	}
 }
