@@ -1,0 +1,40 @@
+\usepackage{docmute}
+\usepackage{graphicx,xcolor}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage[pdfusetitle,hidelinks]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{prettyref}
+\newrefformat{note}{脚注~\ref*{#1}}
+\newrefformat{figs}{図~\ref*{#1}}
+\newrefformat{fig}{\subref*{#1}}
+\newrefformat{tbl}{表~\ref*{#1}}
+\newcommand\fullref[1]{\hyperref[#1]{\prettyref{#1}}}
+
+\usetikzlibrary{intersections,calc,arrows.meta}
+
+\newcommand*{\includefig}[5][c]{%
+    \begin{minipage}[#1]{#2\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{#5}
+        \subcaption{#3}
+        \label{#4}
+    \end{minipage}
+}
+\newenvironment{imageHere}[2][htbp]{\def\@imageHereTmp{#2}%
+    \begin{figure}[#1]
+        \centering
+}{%  
+        \caption{\@imageHereTmp}
+        \label{figs:\@imageHereTmp}
+    \end{figure}
+}
+
+\title{
+    コズミックトラベル (編集中) \\
+    \large 75th2600内装設計チーフ引き継ぎ
+}
+\author{75th621 千葉森生}
+\date{最終更新日: \today}

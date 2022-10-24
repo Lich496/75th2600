@@ -7,9 +7,124 @@
 	"settings": {
 		"nuxt.isNuxtApp": false,
 		"editor.wordWrap": "on",
-		"latex-workshop.latex.autoBuild.run": "onSave",
+		// latex settings
+		"latex-workshop.latex.tools": [
+			{
+				"name": "Step 1: ptex2pdf",
+				"command": "ptex2pdf",
+				"args": [
+					"-interaction=nonstopmode",
+					"-l",
+					"-ot",
+					"-kanji=utf8 -synctex=1",
+					"%DOCFILE%.tex"
+				]
+			},
+			{
+				"name": "Step 2: pbibtex",
+				"command": "pbibtex",
+				"args": [
+					"%DOCFILE%",
+					"-kanji=utf8"
+				]
+			},
+			{
+				"name": "Step 3: ptex2pdf",
+				"command": "ptex2pdf",
+				"args": [
+					"-interaction=nonstopmode",
+					"-l",
+					"-ot",
+					"-kanji=utf8 -synctex=1",
+					"%DOCFILE%.tex"
+				]
+			},
+			{
+				"name": "Step 4: ptex2pdf",
+				"command": "ptex2pdf",
+				"args": [
+					"-interaction=nonstopmode",
+					"-l",
+					"-ot",
+					"-kanji=utf8 -synctex=1",
+					"%DOCFILE%.tex"
+				]
+			},
+			{
+				"name": "uptex2pdf",
+				"command": "ptex2pdf",
+				"args": [
+					"-interaction=nonstopmode",
+					"-u",
+					"-l",
+					"-ot",
+					"-synctex=1",
+					"%DOC%",
+				]
+			},
+			{
+				"name": "latexmk",
+				"command": "latexmk",
+				"args": [
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-file-line-error",
+					"-outdir=%OUTDIR%",
+					"%DOC%"
+				],
+				"env": {}
+			}
+		],
+		"latex-workshop.latex.recipes": [
+			//{
+			//	"name": "latexmk",
+			//	"tools": ["latexmk"]
+			//}
+			{
+				"name": "make_uptex2pdf",
+				"tools": [
+					"uptex2pdf"
+				]
+			}
+			// {
+			//     "name": "toolchain",
+			//     "tools": [
+			//         "Step 1: ptex2pdf",
+			//         "Step 2: pbibtex",
+			//         "Step 3: ptex2pdf",
+			//         "Step 4: ptex2pdf"
+			//     ]
+			// },
+		],
+		"latex-workshop.latex.outDir": "",
+		"latex-workshop.view.pdf.viewer": "tab",
+		"latex-workshop.latex.autoClean.run": "onBuilt",
+		"latex-workshop.latex.autoBuild.run": "never",
 		"latex-workshop.bibtex-format.tab": "4 spaces",
-		"latex-workshop.latex.autoClean.run": "onFailed",
-		"latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false
+		"latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+		"latex-workshop.latex.clean.fileTypes": [
+			"*.bbl",
+			"*.blg",
+			"*.idx",
+			"*.ind",
+			"*.lof",
+			"*.lot",
+			"*.out",
+			"*.toc",
+			"*.acn",
+			"*.acr",
+			"*.alg",
+			"*.glg",
+			"*.glo",
+			"*.gls",
+			"*.fls",
+			"*.log",
+			"*.fdb_latexmk",
+			"*.snm",
+			"*.synctex(busy)",
+			"*.synctex.gz(busy)",
+			"*.nav",
+			"*.vrb"
+		],
 	}
 }
