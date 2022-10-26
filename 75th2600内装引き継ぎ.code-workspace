@@ -63,29 +63,60 @@
 				]
 			},
 			{
+				"name": "ptex2pdf",
+				"command": "ptex2pdf",
+				"args": [
+					"-interaction=nonstopmode",
+					"-l",
+					"-ot",
+					"-synctex=1",
+					"%DOC%",
+				]
+			},
+			{
 				"name": "latexmk",
 				"command": "latexmk",
 				"args": [
 					"-synctex=1",
 					"-interaction=nonstopmode",
 					"-file-line-error",
+					"-halt-on-error",
 					"-outdir=%OUTDIR%",
+					"%DOC%"
+				],
+				"env": {}
+			},
+			{
+				"name": "lualatex",
+				"command": "lualatex",
+				"args": [
+					"-cmdx",
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-file-line-error",
+					"-halt-on-error",
 					"%DOC%"
 				],
 				"env": {}
 			}
 		],
 		"latex-workshop.latex.recipes": [
+			{
+				"name": "make_uptex2pdf",
+				"tools": ["uptex2pdf"]
+			},
+			{
+				"name": "make_ptex2pdf",
+				"tools": ["ptex2pdf"]
+			},
+			{
+				"name": "lualatex",
+				"tools": ["lualatex"]
+			},
 			//{
 			//	"name": "latexmk",
 			//	"tools": ["latexmk"]
 			//}
-			{
-				"name": "make_uptex2pdf",
-				"tools": [
-					"uptex2pdf"
-				]
-			}
 			// {
 			//     "name": "toolchain",
 			//     "tools": [
@@ -94,7 +125,7 @@
 			//         "Step 3: ptex2pdf",
 			//         "Step 4: ptex2pdf"
 			//     ]
-			// },
+			// }
 		],
 		"latex-workshop.latex.outDir": "",
 		"latex-workshop.view.pdf.viewer": "tab",
@@ -103,14 +134,15 @@
 		"latex-workshop.bibtex-format.tab": "4 spaces",
 		"latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
 		"latex-workshop.latex.clean.fileTypes": [
+			//"*.aux",
 			"*.bbl",
 			"*.blg",
-			"*.idx",
+			//"*.idx",
 			"*.ind",
 			"*.lof",
 			"*.lot",
-			"*.out",
-			"*.toc",
+			//"*.out",
+			//"*.toc",
 			"*.acn",
 			"*.acr",
 			"*.alg",

@@ -1,19 +1,35 @@
+%\usepackage{luatexja}
 \usepackage{docmute}
-\usepackage{graphicx,xcolor}
+
+%\usepackage[2.0]{bxpdfver}
+
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\graphicspath{{./docs/images/}{./images/}}
+\definecolor{forground}{gray}{0.75}
+\definecolor{background}{gray}{0.10}
+\color{forground}
+\pagecolor{background}
+
 \usepackage{siunitx}
+
 \usepackage{tikz}
+\usetikzlibrary{intersections,calc,arrows.meta}
+
+%\usepackage[style=base]{caption}
 \usepackage[subrefformat=parens]{subcaption}
-\usepackage[pdfusetitle,hidelinks]{hyperref}
-\usepackage{pxjahyper}
 
 \usepackage{prettyref}
 \newrefformat{note}{脚注~\ref*{#1}}
 \newrefformat{figs}{図~\ref*{#1}}
-\newrefformat{fig}{\subref*{#1}}
+\newrefformat{fig}{図~\ref*{#1}}
 \newrefformat{tbl}{表~\ref*{#1}}
-\newcommand\fullref[1]{\hyperref[#1]{\prettyref{#1}}}
+\newcommand*{\fullref}[1]{\hyperref[#1]{\prettyref{#1}}}
 
-\usetikzlibrary{intersections,calc,arrows.meta}
+\usepackage[pdfusetitle,hidelinks]{hyperref}
+\usepackage{pxjahyper}
 
 \newcommand*{\includefig}[5][c]{%
     \begin{minipage}[#1]{#2\linewidth}
